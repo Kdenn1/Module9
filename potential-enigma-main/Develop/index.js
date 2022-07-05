@@ -4,7 +4,7 @@ const util = require("util");
 //this one was in the module I'm pretty sure it's required 
 const inquirer = require("inquirer");
 //links to the external generateMarkdown js file 
-const generateReadme = require("./utils/generateMarkdown");
+const generateREADME = require("./utils/generateMarkdown");
 const writeFileAsync = util.promisify(fs.writeFile);
 
 // TODO: Create an array of questions for user input
@@ -67,14 +67,22 @@ function questionPrompt(){
 }
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
+function writeToFile(fileName, data) {}
+
+
+// TODO: Create a function to initialize app
+function init() {
     try {
-        
+        const answers = await questionPrompt();
+        const generateContent = generateREADME(answers);
+
+        await writeFileAsync('./potential-enigma-main/README.md', generateContent);
+        console.log('README file has been successfully written');
+    } catch(err){
+        console.log(err);
     }
 }
 
-// TODO: Create a function to initialize app
-function init() {}
-
 // Function call to initialize app
 init();
+
