@@ -1,6 +1,6 @@
 // TODO: Include packages needed for this application
 const fs = require("fs");
-const util = require("potential-enigma-main");
+const util = require("util");
 //this one was in the module I'm pretty sure it's required 
 const inquirer = require("inquirer");
 //links to the external generateMarkdown js file 
@@ -36,11 +36,6 @@ function promptUser(){
             message: "Who contributed to the project?"
         },
         {
-            type: "input",
-            name: "Projecttesting",
-            message: "Is there a test? If so how does user use it?"
-        },
-        {
             type: "list",
             name: "Licensing",
             message: "Choose a license option from the list below",
@@ -66,21 +61,21 @@ function promptUser(){
     ])
 }
 
-// TODO: Create a function to initialize app
+// Async function using util.promisify 
 async function init() {
     try {
-        // ask questions and generate the responses 
+        // Ask user questions and generate responses
         const answers = await promptUser();
-        // links to the external generatemarkdown js page 
         const generateContent = generateMarkdown(answers);
-
-        await writeFileAsync('./Develop/dist/README.md', generateContent);
-        console.log('README file has been successfully written');
-    } catch(err){
+        // Write a user generated readme to the dist folder 
+        await writeFileAsync('./dist/README.md', generateContent);
+        //console log the message to know it worked 
+        console.log('Successfully wrote to README.md');
+        //throw an error message if it doesn't work 
+    }   catch(err) {
         console.log(err);
     }
-}
-
-// Function call to initialize app
-init();
+  }
+  //call the init function  
+  init();
 
