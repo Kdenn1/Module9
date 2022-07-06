@@ -22,22 +22,22 @@ function promptUser(){
         },
         {
             type: "input",
-            name: "Installation",
+            name: "installation",
             message: "What is the installation process for the user: "
         },
         {
             type: "input",
-            name: "Usage of project",
+            name: "usage",
             message: "Describe what the project is used for/purpose"
         },
         {
             type: "input",
-            name: "Contribution",
+            name: "contribution",
             message: "Who contributed to the project?"
         },
         {
             type: "list",
-            name: "Licensing",
+            name: "license",
             message: "Choose a license option from the list below",
             choices: [
                 "Mozilla",
@@ -49,12 +49,12 @@ function promptUser(){
         },
         {
             type: "input",
-            name: "Githubusername",
+            name: "username",
             message: "What is your Github username?"
         },
         {
             type: "input",
-            name: "useremail",
+            name: "email",
             message: "What is your email?"
         },
 
@@ -70,7 +70,7 @@ async function init() {
         // Write a user generated readme to the dist folder 
         await writeFileAsync('./dist/README.md', generateContent);
         //console log the message to know it worked 
-        console.log('Successfully wrote to README.md');
+        console.log('Successfully generated new README.md file');
         //throw an error message if it doesn't work 
     }   catch(err) {
         console.log(err);

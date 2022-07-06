@@ -1,6 +1,6 @@
 function generateMarkdown(answers) {
   return `
-<h1 align="center">${answers.projectTitle} </h1>
+<h1 align="center">${answers.Title} </h1>
 
 ## Description
 🔍 ${answers.description}
@@ -26,13 +26,9 @@ function generateMarkdown(answers) {
 This application is covered by the ${answers.license} license. 
 
 ## Contributions
- ${answers.contributing}
+ ${answers.contribution}
 
-## Testing Options
- ${answers.tests}
-
-## Common Questions 
- ${answers.questions}<br />
+br />
 <br />
 :octocat: Find me on GitHub: [${answers.username}](https://github.com/${answers.username})<br />
 <br />
