@@ -4,25 +4,25 @@ const util = require("potential-enigma-main");
 //this one was in the module I'm pretty sure it's required 
 const inquirer = require("inquirer");
 //links to the external generateMarkdown js file 
-const generateREADME = require("./utils/generateMarkdown");
-const writeToFile = util.promisify(fs.writeFile);
+const generateMarkdown = require("./utils/generateMarkdown");
+const writeFileAsync = util.promisify(fs.writeFile);
 
 // TODO: Create an array of questions for user input
-function questionPrompt(){
-    return inquirer.question([
+function promptUser(){
+    return inquirer.prompt([
         {
             type: "input",
-            name: "Title of Project",
+            name: "Title",
             message: "What is the title of your project?",
         },
         {
             type: "input",
-            name: "Description of Project",
+            name: "Description",
             message: "Give a description of your project"
         },
         {
             type: "input",
-            name: "How to install the project",
+            name: "Installation",
             message: "What is the installation process for the user: "
         },
         {
@@ -32,12 +32,12 @@ function questionPrompt(){
         },
         {
             type: "input",
-            name: "Contribution to the Project",
+            name: "Contribution",
             message: "Who contributed to the project?"
         },
         {
             type: "input",
-            name: "Project testing",
+            name: "Projecttesting",
             message: "Is there a test? If so how does user use it?"
         },
         {
@@ -54,29 +54,27 @@ function questionPrompt(){
         },
         {
             type: "input",
-            name: "Github username",
+            name: "Githubusername",
             message: "What is your Github username?"
         },
         {
             type: "input",
-            name: "user email",
+            name: "useremail",
             message: "What is your email?"
         },
 
     ])
 }
 
-// TODO: Create a function to write README file
-
-
-
 // TODO: Create a function to initialize app
-function init() {
+async function init() {
     try {
-        const answers = await questionPrompt();
-        const generateContent = generateREADME(answers);
+        // ask questions and generate the responses 
+        const answers = await promptUser();
+        // links to the external generatemarkdown js page 
+        const generateContent = generateMarkdown(answers);
 
-        await writeToFile('./potential-enigma-main/Develop/README.md', generateContent);
+        await writeFileAsync('./Develop/dist/README.md', generateContent);
         console.log('README file has been successfully written');
     } catch(err){
         console.log(err);
