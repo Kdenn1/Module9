@@ -11,8 +11,6 @@ function generateMarkdown(answers) {
 - [Usage](#usage)
 - [License](#license)
 - [Contributing](#contributing)
-- [Tests](#tests)
-- [Questions](#questions)
 
 ## Installation
 💾 ${answers.installation}
@@ -28,7 +26,7 @@ This application is covered by the ${answers.license} license.
 ## Contributions
  ${answers.contribution}
 
-br />
+
 <br />
 :octocat: Find me on GitHub: [${answers.username}](https://github.com/${answers.username})<br />
 <br />
