@@ -3,7 +3,7 @@ function generateMarkdown(answers) {
 <h1 align="center">${answers.Title} </h1>
 
 ## Description
-🔍 ${answers.description}
+🔍 ${answers.Description}
 
 ## Table of Contents
 - [Description](#description)
